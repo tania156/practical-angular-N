@@ -1,0 +1,5 @@
+.failed-student {
+  background-color: #ffcccc; /* Червоний фон */
+  color: #c00;
+  font-weight: bold;
+}

@@ -1,0 +1,10 @@
+<table>
+@for (student of students; track $index){
+  <tr [ngClass]="{'good': student.grade <= 60}">
+    <td>{{ student.name }}</td>
+    <td>{{ student.grade }}</td>
+    <td>{{ student.email }}</td>
+    <td><button (click)="deleteStudent(student)">Delete</button></td>
+  </tr>
+}
+</table>

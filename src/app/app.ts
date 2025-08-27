@@ -1,12 +1,30 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common'; // <<-- ДОДАЙТЕ ЦЕЙ ІМПОРТ
+
+// Якщо Students і Welcome є окремими компонентами, їх слід імпортувати так.
+// Якщо Students - це просто інтерфейс, цей імпорт може бути іншим.
+
+import {Student} from './component/student/student';
+import {RouterOutlet} from '@angular/router';
+// import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  imports: [
+    CommonModule,     // <<-- ТУТ МАЄ БУТИ COMMONMODULE
+    Student,
+    RouterOutlet
+  ],
+  standalone: true,
 })
-export class App {
-  protected readonly title = signal('students-app');
+export class AppComponent {
+  // <<-- ДОДАЙТЕ СЮДИ МАСИВ STUDENTS
+  students = [
+    { name: 'Ivan Petrenko', grade: 85, email: 'ivan@gmail.com' },
+    { name: 'Oksana Shevchenko', grade: 90, email: 'oksana@dev.com' },
+    { name: 'Petro Vasylenko', grade: 45, email: 'petro@ukr.net' },
+    { name: 'Maria Tkachenko', grade: 45, email: 'maria@gmail.com' },
+  ];
 }
